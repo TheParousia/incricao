@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-valy1f53(pth=&qs20l$73sn=b(zt=z4xu((6p=2ui)1qpen0!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +85,11 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+#   MYSQL_ROOT_PASSWORD: budding_primal_jody8
+#   MYSQL_DATABASE: herdeiros_db
+#   MYSQL_USER: sys_herdeiros_user
+#   MYSQL_PASSWORD: prowl_4bawd_unclothed
 
 
 # Password validation

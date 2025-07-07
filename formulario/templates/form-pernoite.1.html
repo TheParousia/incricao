@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulário de Disponibilidade - Julho 2025</title>
+    <title>Inscrição da Pernoite</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -40,130 +46,56 @@
       }
     </style>
   </head>
-  <body class="bg-gray-50 flex items-center justify-center min-h-screen py-12">
+
+  <body class="bg-gray-50 flex items-center justify-center min-h-screen">
     <div
       class="w-full max-w-2xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-lg"
     >
-      <form id="availabilityForm" method="post">
+      <div class="text-center mb-6">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">
+          Inscrição para Pernoite
+        </h1>
+        <p>Preencha o formulário abaixo para se inscrever na pernoite.</p>
+      </div>
+      <form id="availabilityForm" action="/incricao/pernoite/" method="post">
         {% csrf_token %}
+        <br />
         <input type="hidden" name="usercode" value="{{ usercode }}" />
-        <div class="text-center mb-8">
-          <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">
-            Formulário de Inscrição
-          </h1>
-          <p class="text-gray-500 mt-2">
-            Preencha seus dados e selecione sua disponibilidade.
-          </p>
-        </div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required />
+        <br />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <br />
+        <br />
 
-        <!-- Novos campos do formulário -->
-        <div class="space-y-6 mb-8">
-          <div>
-            <label
-              for="nome"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Digite seu nome</label
-            >
-            <input
-              type="text"
-              name="nome"
-              id="nome"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition"
-            />
-          </div>
-          <div>
-            <label
-              for="email"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Digite seu email</label
-            >
-            <input
-              type="email"
-              name="email"
-              id="email"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition"
-            />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700"
-              >Você irá para o Calebe?</label
-            >
-            <div class="mt-2 flex items-center space-x-6">
-              <div class="flex items-center">
-                <input
-                  id="calebe_sim"
-                  name="calebe"
-                  type="radio"
-                  value="sim"
-                  required
-                  class="h-4 w-4 text-sky-600 border-gray-300 focus:ring-sky-500"
-                />
-                <label for="calebe_sim" class="ml-2 block text-sm text-gray-900"
-                  >Sim</label
-                >
-              </div>
-              <div class="flex items-center">
-                <input
-                  id="calebe_nao"
-                  name="calebe"
-                  type="radio"
-                  value="nao"
-                  required
-                  class="h-4 w-4 text-sky-600 border-gray-300 focus:ring-sky-500"
-                />
-                <label for="calebe_nao" class="ml-2 block text-sm text-gray-900"
-                  >Não</label
-                >
-              </div>
-            </div>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700"
-              >Você tem camisa do Calebe de 2025 (verde)?</label
-            >
-            <div class="mt-2 flex items-center space-x-6">
-              <div class="flex items-center">
-                <input
-                  required
-                  id="camisa_sim"
-                  name="camisa_calebe"
-                  type="radio"
-                  value="sim"
-                  required
-                  class="h-4 w-4 text-sky-600 border-gray-300 focus:ring-sky-500"
-                />
-                <label for="camisa_sim" class="ml-2 block text-sm text-gray-900"
-                  >Sim</label
-                >
-              </div>
-              <div class="flex items-center">
-                <input
-                  required
-                  id="camisa_nao"
-                  name="camisa_calebe"
-                  type="radio"
-                  value="nao"
-                  required
-                  class="h-4 w-4 text-sky-600 border-gray-300 focus:ring-sky-500"
-                />
-                <label for="camisa_nao" class="ml-2 block text-sm text-gray-900"
-                  >Não</label
-                >
-              </div>
-            </div>
-          </div>
-        </div>
+        <br />
 
-        <hr class="my-8" />
-
-        <div class="text-center mb-6">
-          <h2 class="text-xl font-bold text-gray-800">
-            Selecione sua Disponibilidade
+        <div class="text-left mb-6">
+          <h2 class="text-1xl sm:text-2xl font-bold text-gray-800">
+            Sobre o Calebe, responda
           </h2>
-          <p class="text-gray-500 mt-1">
-            Escolha os dias disponíveis no mês de
+          <label for="vai_calebe">Você irá para o CALEBE?:</label>
+          <input
+            type="radio"
+            id="vai_calebe"
+            name="vai_calebe"
+            checked
+            value="sim"
+            required
+          />
+          Sim
+          <input
+            type="radio"
+            id="vai_calebe"
+            name="vai_calebe"
+            value="nao"
+            required
+          />
+          Não
+
+          <p class="text-gray-500 mt-2">
+            Escolha os dias em que você está disponível no mês de
             <span id="month-name" class="font-semibold text-sky-600"></span>.
           </p>
         </div>
@@ -185,31 +117,32 @@
           </div>
         </div>
 
-        <div>
-        <br>
-    <br>
-          <label
-            for="observacao"
-            class="block text-sm font-medium text-gray-700 mb-1"
-            >Digite alguma observação pertinente:</label
-          >
-          <textarea
-            name="observacao"
-            id="observacao"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition"
-          ></textarea>
-        </div>
-
         <div class="mt-8 text-center">
           <button
             type="submit"
             class="w-full sm:w-auto bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-10 rounded-lg shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
           >
-            Salvar Inscrição
+            Enviar Formulário
           </button>
         </div>
       </form>
     </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
