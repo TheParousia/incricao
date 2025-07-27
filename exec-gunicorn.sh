@@ -1,1 +1,1 @@
-gunicorn --workers 4 --bind 0.0.0.0:8001 --timeout 30 --log-level info --access-logfile /home/logs/access.log --error-logfile /home/logs/error.log  core.wsgi:application
+gunicorn --workers 4 --bind 0.0.0.0:8001 --timeout 30 --log-level info --access-logfile /home/logs/access.log --error-logfile /home/logs/error.log  core.wsgi:application &
